@@ -1,0 +1,34 @@
+{
+    "z_min": {
+        "value": -500,
+        "path": "domain/z_min"
+    },
+    "z_max": {
+        "value": 500,
+        "path": "domain/z_max"
+    },
+    "use_2D": {
+        "value": "false",
+        "path": "domain/use_2D"
+    },
+    "save_time": {
+        "value": 60,
+        "path": "save/full_data/interval"
+    },
+    "time_add_tnf": {
+        "value": 5,
+        "path": "user_parameters/time_add_tnf"
+    },
+    "duration_add_tnf": {
+        "value": 5,
+        "path": "user_parameters/duration_add_tnf"
+    },
+    "concentration_tnf": {
+        "value": 0.1009,
+        "path": "user_parameters/concentration_tnf"
+    },
+    "tumor_radius": {
+        "value": 275,
+        "path": "user_parameters/tumor_radius"
+    }
+}

@@ -1,0 +1,2 @@
+Time taken for the simulation set execution: 25450.61412000656 seconds
+CPU time taken for the simulation set execution: 851.037221767 seconds

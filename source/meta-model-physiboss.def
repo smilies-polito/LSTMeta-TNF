@@ -1,0 +1,48 @@
+Bootstrap: library
+From: ubuntu:22.04
+
+%files
+
+%post
+    apt update -y
+    apt upgrade -y
+
+    apt install python3.10 -y
+    apt install python3-pip -y
+    apt install python-is-python3 -y
+    apt install python3-venv -y
+    apt install vim -y
+
+    pip --no-cache-dir install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+    pip --no-cache-dir install numpy
+    pip --no-cache-dir install jupyter
+    pip --no-cache-dir install matplotlib
+    pip --no-cache-dir install pandas
+    pip --no-cache-dir install PyYAML
+    pip --no-cache-dir install scipy
+    pip --no-cache-dir install tqdm
+    pip --no-cache-dir install wandb
+    pip --no-cache-dir install pctk
+
+
+    apt install flex -y
+    apt install bison -y
+
+# add commands to clone the correct version of physiboss used in he project
+
+    cd ..
+    git clone https://github.com/migp11/spheroid-tnf-v2-emews
+    cd spheroid-tnf-v2-emews
+    scp -r model ../
+    cd ..
+    rm -rf spheroid-tnf-v2-emews
+
+
+
+
+
+# to run this container execute the file singularity_shell_nvidia.sh meta-model-physiboss.def
+
+%runscript
+
+    pwd

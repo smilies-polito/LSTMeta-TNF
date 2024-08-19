@@ -1,0 +1,10 @@
+numpy
+matplotlib
+pandas
+PyYAML
+scipy
+tqdm
+wandb
+pctk
+flex
+bison
