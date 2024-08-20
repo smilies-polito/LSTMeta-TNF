@@ -4,6 +4,11 @@ From: ubuntu:22.04
 %files
 
 %post
+
+    ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime
+    export DEBIAN_FRONTEND=noninteractive
+    echo "export DEBIAN_FRONTEND=noninteractive" >> $SINGULARITY_ENVIRONMENT
+
     apt update -y
     apt upgrade -y
 
@@ -12,6 +17,7 @@ From: ubuntu:22.04
     apt install python-is-python3 -y
     apt install python3-venv -y
     apt install vim -y
+    apt install git -y
 
     pip --no-cache-dir install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
     pip --no-cache-dir install numpy
@@ -25,16 +31,16 @@ From: ubuntu:22.04
     pip --no-cache-dir install pctk
 
 
+
     apt install flex -y
     apt install bison -y
 
-# add commands to clone the correct version of physiboss used in he project
+# add commands to clone the correct version of physiboss used in the project and put it in the built-in tmp folder
 
-    cd ..
+    cd /tmp
     git clone https://github.com/migp11/spheroid-tnf-v2-emews
-    cd spheroid-tnf-v2-emews
-    scp -r model ../
-    cd ..
+    cp -r spheroid-tnf-v2-emews/model /tmp
+    chmod -R u+w /tmp/model
     rm -rf spheroid-tnf-v2-emews
 
 

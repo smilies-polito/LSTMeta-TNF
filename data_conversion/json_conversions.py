@@ -7,8 +7,8 @@ from pctk import multicellds
 
 # This script defines the funztions to convert the output data from the PhysiBoSS simulations to JSON format
 
-def input_parameters_save(simulation, output_folder):
-    json_file_path = ('../helpers/simulation_parameters/simulation_parameters.json')
+def input_parameters_save(simulation, output_folder, json_file_path):
+    
     output_filename = os.path.join(output_folder,f'input_parameters/input_parameters_{simulation}.json')
 
     shutil.copy(json_file_path, output_filename)

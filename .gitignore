@@ -175,6 +175,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# not upload the sif file and the physiboss model's output
-model/
+# not upload the sif file
 *.sif

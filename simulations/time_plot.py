@@ -96,12 +96,11 @@ def create_plot(times_df, time_key, title, filename):
     # Save the plot to a file
     plt.savefig(filename)
 
-    plt.show()
-
 # Read the CSV file
-time_filename = '../times/mean_times.csv'
-times_df = pd.read_csv(time_filename, sep='\t')
+if __name__ == '__main__':
+    time_filename = '../times/mean_times.csv'
+    times_df = pd.read_csv(time_filename, sep='\t')
 
-# Create and save the plots
-create_plot(times_df, 'mean_time', 'Time Comparison', '../times/time_plot.png')
-create_plot(times_df, 'mean_time_CPU', 'Computation Time Comparison', '../times/cpu_time_plot.png')
+    # Create and save the plots
+    # create_plot(times_df, 'mean_time', 'Time Comparison', '../times/time_plot.png') # plot with execution time
+    create_plot(times_df, 'mean_time_CPU', 'Computation Time Comparison', '../times/cpu_time_plot.png') #plot with CPU/GPU time

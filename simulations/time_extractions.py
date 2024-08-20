@@ -12,15 +12,16 @@ from single_simulation import single_simu
 
 #number of simulations for each set of parameters
 two_D = True
-output_folder = '/home/users/smeriglio/tmp/'
+output_folder = '/mnt/tmp/'
 
 #range extracted from supplementary table of https://www.frontiersin.org/articles/10.3389/fmolb.2022.836794/full
 tumor_radiuses = [50, 100, 275, 400]
 
 num_equal_smulations = 4
 
+os.chdir('..')
 root_dir = os.getcwd()
-json_file_path = os.path.join('../helpers/simulation_parameters/simulation_parameters.json')
+json_file_path = os.path.join(root_dir, 'helpers/simulation_parameters/simulation_parameters.json')
 
 with open(json_file_path, 'r') as f:
     data = json.load(f)
@@ -55,7 +56,7 @@ for tumor_radius in tumor_radiuses:
         start_time = time.time()
         start_CPU_time = time.process_time()
 
-        CPU_sub_time = single_simu(two_D, simulation_n, output_folder)
+        CPU_sub_time = single_simu(two_D, simulation_n, output_folder, root_dir)
 
 
         end_time = time.time()

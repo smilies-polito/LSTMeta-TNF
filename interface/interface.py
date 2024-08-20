@@ -19,7 +19,7 @@ class interface:
 
         # define the directory
         self.root_dir = root_dir
-        self.PhysiBoSS_dir = os.path.join(root_dir, 'model')
+        self.PhysiBoSS_dir = '/tmp/model'
         self.two_D = two_D
 
         #define the parameter dict
@@ -38,16 +38,13 @@ class interface:
 
         self.output_folder = os.path.join(self.PhysiBoSS_dir, 'output')
 
-    def update_parameters(self, iteration):
+    def update_parameters(self):
         
         # File path for the physicell settings
-        if iteration == 0:
-            physicell_setting_file = os.path.join(self.root_dir, 'model/config/PhysiCell_settings.xml')
-        else:
-            physicell_setting_file = os.path.join(self.root_dir, 'model/config/PhysiCell_settings.xml')
+        physicell_setting_file = os.path.join(self.PhysiBoSS_dir, 'config/PhysiCell_settings.xml')
 
         # Path for the directory with the saving of old simulation
-        old_simu_path = os.path.join(self.root_dir, 'model/starting_file_trial')
+        old_simu_path = os.path.join(self.PhysiBoSS_dir, 'starting_file_trial')
         
         # Upload XML file
         tree = ET.parse(physicell_setting_file)

@@ -6,9 +6,8 @@ from data_conversion.json_conversions import *
 
 # This script defines the execution of a single PhysiBoSS simulation with the given parameters.
 
-def single_simu(two_D, simulation, output_folder):
-    os.chdir('..')
-    root_dir = os.getcwd()
+def single_simu(two_D, simulation, output_folder, root_dir):
+    
     json_file_path = os.path.join(root_dir, 'helpers/simulation_parameters/simulation_parameters.json')
 
     folders = ['cell_data', 'input_parameters']
@@ -22,7 +21,7 @@ def single_simu(two_D, simulation, output_folder):
     # define interface object
     my_interface = interface(root_dir, json_file_path, two_D)
     
-    my_interface.update_parameters(simulation)
+    my_interface.update_parameters()
 
     # Execute the simulation with new parameters
 
@@ -32,7 +31,7 @@ def single_simu(two_D, simulation, output_folder):
     #microenv_dictionary = microenv_data(simulation, output_folder)
     cell_dictionary = cell_data(simulation, output_folder)
 
-    input_parameters_save(simulation, output_folder)
+    input_parameters_save(simulation, output_folder, json_file_path)
     
     return CPU_time
 

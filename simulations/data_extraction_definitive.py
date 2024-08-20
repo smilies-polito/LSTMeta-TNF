@@ -12,6 +12,10 @@ from single_simulation import single_simu
 # it calls the single simulation script to run the simulations after changing 
 # the input parameters in the /helpers/simulation_paramers/simulation_parameters.json file
 
+# get the current directory
+os.chdir('..')
+root_dir = os.getcwd()
+
 # Get the time for the simulation set execution
 start_time = time.time()
 start_CPU_time = time.process_time()
@@ -49,8 +53,7 @@ combinations = [combo for combo in combinations_total if combo[1] > 0.1]
 
 print(len(combinations))
 
-root_dir = os.getcwd()
-json_file_path = os.path.join('../helpers/simulation_parameters/simulation_parameters.json')
+json_file_path = os.path.join(root_dir, 'helpers/simulation_parameters/simulation_parameters.json')
 
 with open(json_file_path, 'r') as f:
     data = json.load(f)
@@ -75,7 +78,7 @@ for combo in combinations:
         json.dump(data, f, indent=4)
 
     # Uncomment this line to run the simulation
-    CPU_time = single_simu(two_D, simulation_n, output_folder)
+    CPU_time = single_simu(two_D, simulation_n, output_folder, root_dir)
     simulation_n += 1
 
 print(f'Number of simulations: {simulation_n} with {simulation_n} set of parameters')
@@ -84,9 +87,8 @@ end_time = time.time()
 end_CPU_time = time.process_time()
 
 # Writing the effective time required to a file
-'''
+
 with open('../times/times.txt', 'w') as f:
     f.write(f'Time taken for the simulation set execution: {end_time - start_time} seconds\n')
     f.write(f'CPU time taken for the simulation set execution: {end_CPU_time - start_CPU_time} seconds\n')
 
-'''
