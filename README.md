@@ -22,7 +22,7 @@ singularity build --fakeroot lstmeta-tnf.sif lstmeta-tnf.def
 
 ## Reproducing the analysis interactively within the lstmeta-tnf Singularity container
 
-To run analyses manually launch the BiSDL Singularity container, move to `/source`, and launch the scripts as follows.
+To run analyses manually launch the lstmeta-tnf Singularity container, move to `/source`, and launch the scripts as follows.
 
 First of all, launch the lstmeta-tnf Singularity container
 ```
