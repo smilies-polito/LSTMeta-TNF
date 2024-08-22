@@ -51,4 +51,5 @@ From: ubuntu:22.04
 
 %runscript
 
-    pwd
+    cd ../simulations/
+    python data_extraction_definitive.py

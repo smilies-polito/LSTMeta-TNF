@@ -24,11 +24,11 @@
         "path": "user_parameters/duration_add_tnf"
     },
     "concentration_tnf": {
-        "value": 0.001,
+        "value": 0.1009,
         "path": "user_parameters/concentration_tnf"
     },
     "tumor_radius": {
-        "value": 400,
+        "value": 50,
         "path": "user_parameters/tumor_radius"
     }
 }
