@@ -1,14 +1,14 @@
 import argparse
 parser = argparse.ArgumentParser(description='Argument Parser')
-parser.add_argument('--tumor_radius', type=int, default=100, help='Tumor radius')
+parser.add_argument('--tumor_radius', type=int, help='Tumor radius')
 parser.add_argument('--epochs', type=int, default=3000, help='Number of epochs')
 parser.add_argument('--n_layers_in', type=int, default=2, help='Number of layers')
-parser.add_argument('--latent_dim', type=int, default=500, help='Latent dimension')
-parser.add_argument('--dropout_lin', type=float, default=0.4, help='Linear dropout')
+parser.add_argument('--latent_dim', type=int, default=1_000, help='Latent dimension')
+parser.add_argument('--dropout_lin', type=float, default=0, help='Linear dropout')
 parser.add_argument('--dropout_rec', type=float, default=0.2, help='Recurrent dropout')
 parser.add_argument('--window_size', type=int, default=24, help='Length of the window in number of steps')
-parser.add_argument('--subsample_every', type=int, default=1, help='Integer interval at which to subsample cell states')
-parser.add_argument('--augment_data', type=int, default=2, help='Integer level at which to augment data (0, 1, 2)')
+parser.add_argument('--subsample_every', type=int, default=2, help='Integer interval at which to subsample cell states')
+parser.add_argument('--augment_data', type=int, default=1, help='Integer level at which to augment data (0, 1, 2)')
 
 args = parser.parse_args()
 
@@ -22,7 +22,7 @@ TUMOR_RADIUS = args.tumor_radius # 50, 100, 275, 400, 'all'
 
 SUBSAMPLE_EVERY = args.subsample_every
 
-WANDB_LOG = True
+WANDB_LOG = False
 
 SEED = 1
 
@@ -53,7 +53,7 @@ import socket
 
 
 if WANDB_LOG:
-    wandb.login(key="f528cb95c325b980ef950c1fec50ea9707fad591")
+    wandb.login(key="KEY")
 
 
 # ##### Parameters

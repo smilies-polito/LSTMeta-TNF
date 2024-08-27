@@ -30,8 +30,6 @@ From: ubuntu:22.04
     pip --no-cache-dir install wandb
     pip --no-cache-dir install pctk
 
-
-
     apt install flex -y
     apt install bison -y
 
@@ -45,11 +43,18 @@ From: ubuntu:22.04
 
 
 
-
-
 # to run this container execute the file singularity_shell_nvidia.sh meta-model-physiboss.def
 
 %runscript
 
-    cd ../simulations/
+    cd lstmeta-tnf/simulations
     python data_extraction_definitive.py
+
+    cd ../metamodel
+    jupyter nbconvert --execute --to notebook --inplace data_exploration.ipynb
+
+    python rec_model_train.py --tumor_radius 50 --latent_dim 1000 --window_size 24 --n_layers_in 2 --dropout_lin 0 --dropout_rec 0.2
+    python rec_model_train.py --tumor_radius 100 --latent_dim 1000 --window_size 24 --n_layers_in 2 --dropout_lin 0 --dropout_rec 0.2
+    python rec_model_train.py --tumor_radius 275 --latent_dim 1000 --window_size 24 --n_layers_in 2 --dropout_lin 0 --dropout_rec 0.2
+    python rec_model_train.py --tumor_radius 400 --latent_dim 1000 --window_size 24 --n_layers_in 2 --dropout_lin 0 --dropout_rec 0.2
+
